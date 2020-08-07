@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    // const firstValue: string = "Manny";
+    // const firstValue: number = 37;
+    // const firstValue: boolean = true;
+    // const firstValue: number[] = [37, 1, 3];
+    const firstValue: Array<string> = ["37", "1", "3"];
+
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            The value {firstValue} is of {typeof firstValue} type!
+          </p>
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;
