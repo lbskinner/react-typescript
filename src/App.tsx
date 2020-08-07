@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import Message from "./Message";
 
 class App extends React.Component {
   render() {
@@ -29,11 +30,12 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
+          {/* <p>
             The value {aTuple[0]} is of {typeof aTuple[0]} type! <br />
             The value {aTuple[1]} is of {typeof aTuple[1]} type! <br />
             {Codes.first} & {Codes.second}
-          </p>
+          </p> */}
+          <Message message="This is a simple message" />
         </header>
       </div>
     );
