@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Message from "./Message";
 
-class App extends React.Component {
+class App extends React.Component<any> {
   render() {
     // const firstValue: string = "Manny";
     // const firstValue: number = 37;
@@ -35,7 +35,7 @@ class App extends React.Component {
             The value {aTuple[1]} is of {typeof aTuple[1]} type! <br />
             {Codes.first} & {Codes.second}
           </p> */}
-          <Message message="This is a simple message" />
+          <Message message="this is a simple message" name="Manny" />
         </header>
       </div>
     );
