@@ -3,18 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Message from "./Message";
 
-const initialState = {
-  name: "Manny",
-  message: "TypeScript is cool!!",
-};
-
-// define a type of the state and name it State
-// <typeof initialState> only doing it for example, not recommended to use
-type State = Readonly<typeof initialState>;
-
-class App extends React.Component<any, State> {
-  // create a readonly state and give it a type of State (defined above) and assign to initialState
-  readonly state: State = initialState;
+class App extends React.Component {
   render() {
     // const firstValue: string = "Manny";
     // const firstValue: number = 37;
@@ -46,7 +35,7 @@ class App extends React.Component<any, State> {
             The value {aTuple[1]} is of {typeof aTuple[1]} type! <br />
             {Codes.first} & {Codes.second}
           </p> */}
-          <Message message={this.state.message} name={this.state.name} />
+          <Message />
         </header>
       </div>
     );
