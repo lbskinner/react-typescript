@@ -2,7 +2,7 @@ import React from "react";
 
 function Header() {
   return (
-    <header className="App-header">
+    <header>
       <h1>Memory Game</h1>
     </header>
   );
