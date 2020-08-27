@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Message from "./Message";
+import Header from "./Header/Header";
 
 class App extends React.Component {
   render() {
@@ -27,14 +28,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-          {/* <p>
-            The value {aTuple[0]} is of {typeof aTuple[0]} type! <br />
-            The value {aTuple[1]} is of {typeof aTuple[1]} type! <br />
-            {Codes.first} & {Codes.second}
-          </p> */}
-          <Message />
-        </header>
+        <Header />
       </div>
     );
   }
