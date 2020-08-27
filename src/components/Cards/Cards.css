@@ -16,3 +16,7 @@ img {
 .memory-card {
   margin: 20px;
 }
+
+.memory-card.active {
+  transform: rotateY(180deg);
+}
