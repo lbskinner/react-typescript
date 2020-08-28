@@ -50,3 +50,9 @@ and will therefore be hidden by the bacface visibility property */
 .memory-card.flip .back {
   transform: rotateY(-180deg);
 }
+
+.image-opacity {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+}
