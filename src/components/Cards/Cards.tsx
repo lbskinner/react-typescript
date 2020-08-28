@@ -1,14 +1,28 @@
 import React, { useState } from "react";
 import "./Cards.css";
 
+type ClassNamesState = {
+  cardId: string;
+  name: string;
+};
+
 function Cards() {
-  const [classNames, setClassNames] = useState("");
+  const [classNames, setClassNames] = useState<ClassNamesState[]>([]);
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    console.log(event.currentTarget);
+    event.currentTarget.classList.add("flip");
+    // const cardObject: ClassNamesState = {
+    //   cardId: id,
+    //   name: " .flip",
+    // };
+    // setClassNames((prevState) => [...prevState, cardObject]);
+    // console.log(classNames);
+  };
+
   return (
     <div className="card-container">
-      <div
-        className={"memory-card" + classNames}
-        onClick={() => setClassNames(" flip")}
-      >
+      <div className="memory-card" onClick={handleClick}>
         <img
           className="back"
           src={require("../../images/joel.jpg")}
@@ -20,7 +34,7 @@ function Cards() {
           alt="Card Front"
         />
       </div>
-      <div className="memory-card">
+      <div className="memory-card" onClick={handleClick}>
         <img
           className="back"
           src={require("../../images/joel.jpg")}
@@ -32,7 +46,7 @@ function Cards() {
           alt="Card Front"
         />
       </div>
-      <div className="memory-card">
+      <div className="memory-card" onClick={handleClick}>
         <img
           className="back"
           src={require("../../images/joel.jpg")}
@@ -44,7 +58,7 @@ function Cards() {
           alt="Card Front"
         />
       </div>
-      <div className="memory-card">
+      <div className="memory-card" onClick={handleClick}>
         <img
           className="back"
           src={require("../../images/joel.jpg")}
@@ -56,7 +70,7 @@ function Cards() {
           alt="Card Front"
         />
       </div>
-      <div className="memory-card">
+      <div className="memory-card" onClick={handleClick}>
         <img
           className="back"
           src={require("../../images/joel.jpg")}
@@ -68,7 +82,7 @@ function Cards() {
           alt="Card Front"
         />
       </div>
-      <div className="memory-card">
+      <div className="memory-card" onClick={handleClick}>
         <img
           className="back"
           src={require("../../images/joel.jpg")}
@@ -80,7 +94,7 @@ function Cards() {
           alt="Card Front"
         />
       </div>
-      <div className="memory-card">
+      <div className="memory-card" onClick={handleClick}>
         <img
           className="back"
           src={require("../../images/joel.jpg")}
@@ -92,7 +106,7 @@ function Cards() {
           alt="Card Front"
         />
       </div>
-      <div className="memory-card">
+      <div className="memory-card" onClick={handleClick}>
         <img
           className="back"
           src={require("../../images/joel.jpg")}
@@ -104,7 +118,7 @@ function Cards() {
           alt="Card Front"
         />
       </div>
-      <div className="memory-card">
+      <div className="memory-card" onClick={handleClick}>
         <img
           className="back"
           src={require("../../images/joel.jpg")}
@@ -116,7 +130,7 @@ function Cards() {
           alt="Card Front"
         />
       </div>
-      <div className="memory-card">
+      <div className="memory-card" onClick={handleClick}>
         <img
           className="back"
           src={require("../../images/joel.jpg")}
@@ -128,7 +142,7 @@ function Cards() {
           alt="Card Front"
         />
       </div>
-      <div className="memory-card">
+      <div className="memory-card" onClick={handleClick}>
         <img
           className="back"
           src={require("../../images/joel.jpg")}
@@ -140,7 +154,7 @@ function Cards() {
           alt="Card Front"
         />
       </div>
-      <div className="memory-card">
+      <div className="memory-card" onClick={handleClick}>
         <img
           className="back"
           src={require("../../images/joel.jpg")}
