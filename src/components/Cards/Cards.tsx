@@ -9,40 +9,49 @@ function Cards() {
         className={"memory-card" + classNames}
         onClick={() => setClassNames(" active")}
       >
-        <img src={require("../../images/joel.jpg")} alt="Card Background" />
+        <img
+          className="back"
+          src={require("../../images/joel.jpg")}
+          alt="Card Back"
+        />
+        <img
+          className="front"
+          src={require("../../images/daniel.jpg")}
+          alt="Card Front"
+        />
       </div>
       <div className="memory-card">
-        <img src={require("../../images/joel.jpg")} alt="Card Background" />
+        <img src={require("../../images/joel.jpg")} alt="Card Back" />
       </div>
       <div className="memory-card">
-        <img src={require("../../images/joel.jpg")} alt="Card Background" />
+        <img src={require("../../images/joel.jpg")} alt="Card Back" />
       </div>
       <div className="memory-card">
-        <img src={require("../../images/joel.jpg")} alt="Card Background" />
+        <img src={require("../../images/joel.jpg")} alt="Card Back" />
       </div>
       <div className="memory-card">
-        <img src={require("../../images/joel.jpg")} alt="Card Background" />
+        <img src={require("../../images/joel.jpg")} alt="Card Back" />
       </div>
       <div className="memory-card">
-        <img src={require("../../images/joel.jpg")} alt="Card Background" />
+        <img src={require("../../images/joel.jpg")} alt="Card Back" />
       </div>
       <div className="memory-card">
-        <img src={require("../../images/joel.jpg")} alt="Card Background" />
+        <img src={require("../../images/joel.jpg")} alt="Card Back" />
       </div>
       <div className="memory-card">
-        <img src={require("../../images/joel.jpg")} alt="Card Background" />
+        <img src={require("../../images/joel.jpg")} alt="Card Back" />
       </div>
       <div className="memory-card">
-        <img src={require("../../images/joel.jpg")} alt="Card Background" />
+        <img src={require("../../images/joel.jpg")} alt="Card Back" />
       </div>
       <div className="memory-card">
-        <img src={require("../../images/joel.jpg")} alt="Card Background" />
+        <img src={require("../../images/joel.jpg")} alt="Card Back" />
       </div>
       <div className="memory-card">
-        <img src={require("../../images/joel.jpg")} alt="Card Background" />
+        <img src={require("../../images/joel.jpg")} alt="Card Back" />
       </div>
       <div className="memory-card">
-        <img src={require("../../images/joel.jpg")} alt="Card Background" />
+        <img src={require("../../images/joel.jpg")} alt="Card Back" />
       </div>
     </div>
   );

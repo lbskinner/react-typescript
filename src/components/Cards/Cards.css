@@ -3,6 +3,7 @@ img {
   height: 120px;
   border: solid 2px darkblue;
   border-radius: 8px;
+  box-shadow: 5px 5px 8px 1px rgba(0, 0, 0, 0.2);
 }
 
 .card-container {
@@ -10,13 +11,39 @@ img {
   grid-template-columns: repeat(4, auto);
   grid-template-rows: repeat(4, auto);
   margin: auto;
+
   width: 60%;
 }
 
 .memory-card {
   margin: 20px;
+  position: relative;
+  perspective: 75rem;
 }
 
-.memory-card.active {
+/* .memory-card.active {
   transform: rotateY(180deg);
+} */
+
+.back,
+.front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* users cannot see the back side of the flipping card when front is showing */
+  backface-visibility: hidden;
+  overflow: hidden;
+  transition: transform 0.8s ease;
+}
+
+.front {
+  transform: rotateY(180deg);
+}
+
+.memory-card:hover .front {
+  transform: rotateY(00deg);
+}
+
+.memory-card:hover .back {
+  transform: rotateY(-180deg);
 }
