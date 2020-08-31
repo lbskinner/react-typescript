@@ -9,8 +9,20 @@ type CardsFlippedState = {
 function Cards() {
   const [lastClicked, setLastClicked] = useState<CardsFlippedState>();
   const [gameOver, setGameOver] = useState(false);
+  const [cardsMatched, setCardsMatched] = useState<string[]>([]);
 
   const cardsDivs = document.querySelectorAll(".memory-card");
+
+  useEffect(() => {
+    handleGameOver();
+  });
+
+  const handleGameOver = () => {
+    if (cardsMatched.length === 12) {
+      setGameOver(true);
+      alert("Game Over!!!");
+    }
+  };
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     const currentClicked = event.currentTarget;
@@ -29,6 +41,11 @@ function Cards() {
               card.getAttribute("data-name") === currentClicked.dataset.name
             ) {
               card.classList.add("image-opacity");
+              card.classList.remove("flip");
+              setCardsMatched((prevState) => [
+                ...prevState,
+                currentClicked.dataset.name || "",
+              ]);
             }
           });
         }, 1000);
@@ -42,12 +59,17 @@ function Cards() {
     }
   };
 
+  const handleStartGame = () => {
+    setCardsMatched([]);
+    setGameOver(false);
+    cardsDivs.forEach((card) => {
+      card.classList.remove("flip", "image-opacity");
+    });
+  };
   return (
     <>
       {gameOver === true && (
-        <button onClick={() => console.log("Start Again Clicked")}>
-          Start Again
-        </button>
+        <button onClick={handleStartGame}>Start Again</button>
       )}
       <div className="card-container">
         <div
