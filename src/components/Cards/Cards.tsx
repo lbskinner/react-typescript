@@ -20,7 +20,6 @@ function Cards() {
   const handleGameOver = () => {
     if (cardsMatched.length === 12) {
       setGameOver(true);
-      alert("Game Over!!!");
     }
   };
 
@@ -69,7 +68,10 @@ function Cards() {
   return (
     <>
       {gameOver === true && (
-        <button onClick={handleStartGame}>Start Again</button>
+        <>
+          <p>Game Over!!!</p>
+          <button onClick={handleStartGame}>Start Again</button>
+        </>
       )}
       <div className="card-container">
         <div
