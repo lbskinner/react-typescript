@@ -69,8 +69,8 @@ function Cards() {
     <>
       {gameOver === true && (
         <>
-          <p>Game Over!!!</p>
-          <button onClick={handleStartGame}>Start Again</button>
+          <h2>Game Over!!!</h2>
+          <button onClick={handleStartGame}>Start Game</button>
         </>
       )}
       <div className="card-container">
