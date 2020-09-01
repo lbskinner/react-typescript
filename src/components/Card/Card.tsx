@@ -2,11 +2,10 @@ import React from "react";
 
 interface cardProps {
   name: string;
-  imageSrc: string;
   handleClick: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
-const Card: React.FC<cardProps> = ({ name, imageSrc, handleClick }) => {
+const Card: React.FC<cardProps> = ({ name, handleClick }) => {
   return (
     <div
       className="memory-card"
@@ -19,7 +18,11 @@ const Card: React.FC<cardProps> = ({ name, imageSrc, handleClick }) => {
         src={require("../../images/joel.jpg")}
         alt="Card Back"
       />
-      <img className="front" src={imageSrc} alt="Card Front" />
+      <img
+        className="front"
+        src={require(`../../images/${name}.jpg`)}
+        alt="Card Front"
+      />
     </div>
   );
 };

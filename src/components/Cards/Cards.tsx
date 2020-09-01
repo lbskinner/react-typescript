@@ -7,6 +7,21 @@ type CardsFlippedState = {
   name: string;
 };
 
+const images = [
+  "daniel",
+  "david",
+  "edgar",
+  "ian",
+  "linnea",
+  "ray",
+  "daniel",
+  "david",
+  "edgar",
+  "ian",
+  "linnea",
+  "ray",
+];
+
 function Cards() {
   const [lastClicked, setLastClicked] = useState<CardsFlippedState>();
   const [gameOver, setGameOver] = useState(false);
@@ -76,28 +91,7 @@ function Cards() {
       )}
 
       <div className="card-container">
-        <Card
-          name="daniel"
-          handleClick={handleClick}
-          imageSrc={require("../../images/daniel.jpg")}
-        />
-        {/* <div
-          className="memory-card"
-          data-name="daniel"
-          data-id="1"
-          onClick={handleClick}
-        >
-          <img
-            className="back"
-            src={require("../../images/joel.jpg")}
-            alt="Card Back"
-          />
-          <img
-            className="front"
-            src={require("../../images/daniel.jpg")}
-            alt="Card Front"
-          />
-        </div> */}
+        <Card name="daniel" handleClick={handleClick} />
         <div
           className="memory-card"
           data-name="daniel"
