@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Cards.css";
+import Card from "../Card/Card";
 
 type CardsFlippedState = {
   cardId: string;
@@ -73,8 +74,14 @@ function Cards() {
           <button onClick={handleStartGame}>Start Game</button>
         </>
       )}
+
       <div className="card-container">
-        <div
+        <Card
+          name="daniel"
+          handleClick={handleClick}
+          imageSrc={require("../../images/daniel.jpg")}
+        />
+        {/* <div
           className="memory-card"
           data-name="daniel"
           data-id="1"
@@ -90,7 +97,7 @@ function Cards() {
             src={require("../../images/daniel.jpg")}
             alt="Card Front"
           />
-        </div>
+        </div> */}
         <div
           className="memory-card"
           data-name="daniel"
