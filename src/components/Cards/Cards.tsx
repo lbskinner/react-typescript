@@ -1,25 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Cards.css";
 import Card from "../Card/Card";
+import Images from "../../ImagesArray";
 
 type CardsFlippedState = {
   name: string;
 };
-
-const images = [
-  "daniel",
-  "david",
-  "edgar",
-  "ian",
-  "linnea",
-  "ray",
-  "daniel",
-  "david",
-  "edgar",
-  "ian",
-  "linnea",
-  "ray",
-];
 
 function Cards() {
   const [lastClicked, setLastClicked] = useState<CardsFlippedState>();
@@ -29,7 +15,7 @@ function Cards() {
   const cardsDivs = document.querySelectorAll(".memory-card");
 
   useEffect(() => {
-    shuffleCards(images);
+    shuffleCards(Images);
   }, []);
 
   useEffect(() => {
@@ -43,7 +29,7 @@ function Cards() {
       // same as temp = array[i] array[i] = array[j] array[j] = temp
       [array[i], array[j]] = [array[j], array[i]];
     }
-    console.log(images);
+    console.log(array);
   };
 
   const handleGameOver = () => {
@@ -89,7 +75,7 @@ function Cards() {
   };
 
   const handleStartGame = () => {
-    shuffleCards(images);
+    shuffleCards(Images);
     setCardsMatched([]);
     setGameOver(false);
     cardsDivs.forEach((card) => {
@@ -106,7 +92,7 @@ function Cards() {
       )}
 
       <div className="card-container">
-        {images.map((image, index) => {
+        {Images.map((image, index) => {
           return <Card key={index} name={image} handleClick={handleClick} />;
         })}
       </div>
