@@ -3,7 +3,6 @@ import "./Cards.css";
 import Card from "../Card/Card";
 
 type CardsFlippedState = {
-  cardId: string;
   name: string;
 };
 
@@ -31,7 +30,18 @@ function Cards() {
 
   useEffect(() => {
     handleGameOver();
-  });
+    shuffleCards(images);
+  }, []);
+
+  const shuffleCards = (array: string[]) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      // using destructurig to swap array[i] and array [j]
+      // same as temp = array[i] array[i] = array[j] array[j] = temp
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    console.log(images);
+  };
 
   const handleGameOver = () => {
     if (cardsMatched.length === 12) {
@@ -44,7 +54,6 @@ function Cards() {
     currentClicked.classList.add("flip");
     if (!lastClicked) {
       setLastClicked({
-        cardId: currentClicked.dataset.id || "",
         name: currentClicked.dataset.name || "",
       });
     } else {
@@ -75,6 +84,7 @@ function Cards() {
   };
 
   const handleStartGame = () => {
+    shuffleCards(images);
     setCardsMatched([]);
     setGameOver(false);
     cardsDivs.forEach((card) => {
@@ -91,7 +101,10 @@ function Cards() {
       )}
 
       <div className="card-container">
-        <Card name="daniel" handleClick={handleClick} />
+        {images.map((image, index) => {
+          return <Card key={index} name={image} handleClick={handleClick} />;
+        })}
+        {/* <Card name="daniel" handleClick={handleClick} />
         <div
           className="memory-card"
           data-name="daniel"
@@ -278,7 +291,7 @@ function Cards() {
             src={require("../../images/ray.jpg")}
             alt="Card Front"
           />
-        </div>
+        </div> */}
       </div>
     </>
   );

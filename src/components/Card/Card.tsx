@@ -7,12 +7,7 @@ interface cardProps {
 
 const Card: React.FC<cardProps> = ({ name, handleClick }) => {
   return (
-    <div
-      className="memory-card"
-      data-name={name}
-      data-id="1"
-      onClick={handleClick}
-    >
+    <div className="memory-card" data-name={name} onClick={handleClick}>
       <img
         className="back"
         src={require("../../images/joel.jpg")}
