@@ -54,6 +54,8 @@ function Cards() {
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     const currentClicked = event.currentTarget;
+    console.log(currentClicked);
+
     currentClicked.classList.add("flip");
     if (!lastClicked) {
       setLastClicked({

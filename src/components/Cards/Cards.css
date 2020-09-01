@@ -12,6 +12,7 @@ img {
   grid-template-rows: repeat(4, 155px);
   margin: auto;
   width: 60%;
+  min-width: 500px;
 }
 
 .memory-card {
@@ -24,6 +25,10 @@ img {
 .memory-card:active {
   transform: scale(0.97);
   transition: transform 0.2s;
+}
+
+.memory-card:hover {
+  cursor: pointer;
 }
 
 .back,
@@ -41,6 +46,10 @@ img {
 and will therefore be hidden by the bacface visibility property */
 .front {
   transform: rotateY(180deg);
+}
+
+.memory-card.flip {
+  pointer-events: none;
 }
 
 .memory-card.flip .front {
@@ -77,4 +86,5 @@ button:active {
 
 button:hover {
   background: linear-gradient(45deg, #1e2d82, #26c4f7);
+  cursor: pointer;
 }
