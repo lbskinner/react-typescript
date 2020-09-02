@@ -39,10 +39,12 @@ function Cards() {
   };
 
   const handleGameOver = () => {
+    // setTimeout(() => {
     setGameOver(true);
     setIsRunning(false);
     console.log("game over");
     console.log(gameTime);
+    // }, 500);
   };
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {

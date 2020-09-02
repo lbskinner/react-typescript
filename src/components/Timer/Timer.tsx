@@ -1,4 +1,4 @@
-import React, { useState, useEffect, SetStateAction } from "react";
+import React, { useState, useEffect } from "react";
 
 interface timerProps {
   isRunning: boolean;
@@ -22,7 +22,7 @@ const Timer: React.FC<timerProps> = ({ isRunning, setGameTime }) => {
       setSeconds(0);
     }
     return () => clearInterval(timer);
-  }, [isRunning, seconds]);
+  }, [isRunning, seconds, setGameTime]);
 
   //   const startTimer = () => {
   //     setIsRunning(true);
