@@ -12,7 +12,6 @@ function Cards() {
   const [gameOver, setGameOver] = useState(false);
   const [cardsMatched, setCardsMatched] = useState<string[]>([]);
   const [timer, setTimer] = useState<number>(0);
-  //   const [cardsFlipped, setCardsFlipped] = useState<HTMLElement>();
 
   const cardsDivs = document.querySelectorAll(".memory-card");
 
@@ -76,7 +75,7 @@ function Cards() {
         setTimeout(() => {
           lastClicked.classList.remove("flip");
           currentClicked.classList.remove("flip");
-        }, 500);
+        }, 800);
       }
     }
   };

@@ -1,9 +1,10 @@
 import React from "react";
+import "./Header.css";
 
 function Header() {
   return (
     <header>
-      <h1>Memory Game</h1>
+      <h1>Memory Card Game</h1>
     </header>
   );
 }

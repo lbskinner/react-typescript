@@ -1,0 +1,6 @@
+header {
+  font-family: "Permanent Marker", cursive;
+  background: linear-gradient(45deg, #1e2d82, #26c4f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
