@@ -14,10 +14,11 @@ const Timer: React.FC<timerProps> = ({ isRunning, setGameTime }) => {
     if (isRunning) {
       timer = setInterval(() => {
         setSeconds((seconds) => seconds + 1);
+        setGameTime(seconds);
       }, 1000);
     } else if (!isRunning && seconds !== 0) {
       clearInterval(timer);
-      setGameTime(seconds);
+
       setSeconds(0);
     }
     return () => clearInterval(timer);

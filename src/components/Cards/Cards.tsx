@@ -91,6 +91,13 @@ function Cards() {
       {gameOver === true ? (
         <>
           <h2>Game Over!!!</h2>
+          <h3>
+            Time Played:{" "}
+            {Math.floor(gameTime / 60) < 10
+              ? `0${Math.floor(gameTime / 60)}`
+              : Math.floor(gameTime / 60)}{" "}
+            : {gameTime % 60 < 10 ? `0${gameTime % 60}` : gameTime % 60}
+          </h3>
           <button onClick={handleStartGame}>Start Game</button>
         </>
       ) : (
