@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Cards.css";
 import Card from "../Card/Card";
 import Images from "../../ImagesArray";
+import Timer from "../Timer/Timer";
 
 type CardsFlippedState = {
   name: string;
@@ -11,26 +12,21 @@ function Cards() {
   const [lastClicked, setLastClicked] = useState<HTMLElement>();
   const [gameOver, setGameOver] = useState(false);
   const [cardsMatched, setCardsMatched] = useState<string[]>([]);
-  const [timer, setTimer] = useState<number>(0);
+  const [isRunning, setIsRunning] = useState<boolean>(false);
+  const [gameTime, setGameTime] = useState<number>(0);
 
   const cardsDivs = document.querySelectorAll(".memory-card");
 
   useEffect(() => {
     shuffleCards(Images);
-    // startTimer();
+    setIsRunning(true);
   }, []);
 
   useEffect(() => {
-    handleGameOver();
+    if (cardsMatched.length === 6) {
+      handleGameOver();
+    }
   });
-
-  const startTimer = () => {
-    setInterval(() => {
-      console.log(timer);
-      setTimer((timer) => timer + 1);
-    }, 1000);
-    return () => clearInterval();
-  };
 
   const shuffleCards = (array: string[]) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -43,10 +39,10 @@ function Cards() {
   };
 
   const handleGameOver = () => {
-    if (cardsMatched.length === 12) {
-      setGameOver(true);
-      //   setTimer(0);
-    }
+    setGameOver(true);
+    setIsRunning(false);
+    console.log("game over");
+    console.log(gameTime);
   };
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -87,18 +83,20 @@ function Cards() {
     cardsDivs.forEach((card) => {
       card.classList.remove("flip", "image-opacity");
     });
-    // startTimer();
+    setIsRunning(true);
   };
 
   return (
     <>
-      {gameOver === true && (
+      {gameOver === true ? (
         <>
           <h2>Game Over!!!</h2>
           <button onClick={handleStartGame}>Start Game</button>
         </>
+      ) : (
+        <Timer isRunning={isRunning} setGameTime={setGameTime} />
       )}
-      <p>Timer: {timer}</p>
+
       <div className="card-container">
         {Images.map((image, index) => {
           return <Card key={index} name={image} handleClick={handleClick} />;
