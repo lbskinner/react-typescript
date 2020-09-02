@@ -8,19 +8,30 @@ type CardsFlippedState = {
 };
 
 function Cards() {
-  const [lastClicked, setLastClicked] = useState<CardsFlippedState>();
+  const [lastClicked, setLastClicked] = useState<HTMLElement>();
   const [gameOver, setGameOver] = useState(false);
   const [cardsMatched, setCardsMatched] = useState<string[]>([]);
+  const [timer, setTimer] = useState<number>(0);
+  //   const [cardsFlipped, setCardsFlipped] = useState<HTMLElement>();
 
   const cardsDivs = document.querySelectorAll(".memory-card");
 
   useEffect(() => {
     shuffleCards(Images);
+    // startTimer();
   }, []);
 
   useEffect(() => {
     handleGameOver();
   });
+
+  const startTimer = () => {
+    setInterval(() => {
+      console.log(timer);
+      setTimer((timer) => timer + 1);
+    }, 1000);
+    return () => clearInterval();
+  };
 
   const shuffleCards = (array: string[]) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -35,41 +46,37 @@ function Cards() {
   const handleGameOver = () => {
     if (cardsMatched.length === 12) {
       setGameOver(true);
+      //   setTimer(0);
     }
   };
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    const currentClicked = event.currentTarget;
+    const currentClicked: HTMLElement = event.currentTarget;
     console.log(currentClicked);
 
     currentClicked.classList.add("flip");
     if (!lastClicked) {
-      setLastClicked({
-        name: currentClicked.dataset.name || "",
-      });
+      setLastClicked(currentClicked);
     } else {
       setLastClicked(undefined);
-      if (lastClicked.name === currentClicked.dataset.name) {
+      if (
+        lastClicked.getAttribute("data-name") === currentClicked.dataset.name
+      ) {
         setTimeout(() => {
-          cardsDivs.forEach((card) => {
-            if (
-              card.getAttribute("data-name") === currentClicked.dataset.name
-            ) {
-              card.classList.add("image-opacity");
-              card.classList.remove("flip");
-              setCardsMatched((prevState) => [
-                ...prevState,
-                currentClicked.dataset.name || "",
-              ]);
-            }
-          });
-        }, 1000);
+          lastClicked.classList.add("image-opacity");
+          currentClicked.classList.add("image-opacity");
+          lastClicked.classList.remove("flip");
+          currentClicked.classList.remove("flip");
+        }, 500);
+        setCardsMatched((prevState) => [
+          ...prevState,
+          currentClicked.dataset.name || "",
+        ]);
       } else {
         setTimeout(() => {
-          cardsDivs.forEach((card) => {
-            card.classList.remove("flip");
-          });
-        }, 1000);
+          lastClicked.classList.remove("flip");
+          currentClicked.classList.remove("flip");
+        }, 500);
       }
     }
   };
@@ -81,7 +88,9 @@ function Cards() {
     cardsDivs.forEach((card) => {
       card.classList.remove("flip", "image-opacity");
     });
+    // startTimer();
   };
+
   return (
     <>
       {gameOver === true && (
@@ -90,7 +99,7 @@ function Cards() {
           <button onClick={handleStartGame}>Start Game</button>
         </>
       )}
-
+      <p>Timer: {timer}</p>
       <div className="card-container">
         {Images.map((image, index) => {
           return <Card key={index} name={image} handleClick={handleClick} />;
