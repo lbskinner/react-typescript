@@ -1,26 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 interface timerProps {
   gameOver: boolean;
+  seconds: number;
   setGameTime: (prevState: number) => void;
+  setSeconds: (prevState: number) => void;
 }
 
-const Timer: React.FC<timerProps> = ({ gameOver, setGameTime }) => {
-  const [seconds, setSeconds] = useState<number>(0);
+const Timer: React.FC<timerProps> = ({
+  gameOver,
+  seconds,
+  setSeconds,
+  setGameTime,
+}) => {
+  // const [seconds, setSeconds] = useState<number>(0);
 
   useEffect(() => {
     let timer: any = null;
     if (!gameOver) {
       timer = setInterval(() => {
-        setSeconds((seconds) => seconds + 1);
+        setSeconds(seconds + 1);
       }, 1000);
       setGameTime(seconds);
     } else if (gameOver && seconds !== 0) {
       clearInterval(timer);
-      setSeconds(0);
     }
     return () => clearInterval(timer);
-  }, [gameOver, seconds, setGameTime]);
+  }, [gameOver, seconds, setGameTime, setSeconds]);
 
   return (
     <p>

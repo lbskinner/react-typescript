@@ -8,6 +8,7 @@ function Cards() {
   const [lastClicked, setLastClicked] = useState<HTMLElement>();
   const [gameOver, setGameOver] = useState(false);
   const [cardsMatched, setCardsMatched] = useState<string[]>([]);
+  const [seconds, setSeconds] = useState<number>(0);
   const [gameTime, setGameTime] = useState<number>(0);
 
   const cardsDivs = document.querySelectorAll(".memory-card");
@@ -32,10 +33,8 @@ function Cards() {
   };
 
   const handleGameOver = () => {
-    // setTimeout(() => {
     setGameOver(true);
     console.log({ gameTime });
-    // }, 500);
   };
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -67,13 +66,23 @@ function Cards() {
     }
   };
 
-  const handleStartGame = () => {
+  const resetGame = () => {
     shuffleCards(Images);
     setCardsMatched([]);
     setGameOver(false);
+    setSeconds(0);
     cardsDivs.forEach((card) => {
       card.classList.remove("flip", "image-opacity");
     });
+  };
+
+  const handleStartGame = () => {
+    gameOver && resetGame();
+    if (!gameOver) {
+      if (window.confirm("Are you sure you want to start a new game?")) {
+        resetGame();
+      }
+    }
   };
 
   return (
@@ -88,11 +97,16 @@ function Cards() {
               : Math.floor(gameTime / 60)}{" "}
             : {gameTime % 60 < 10 ? `0${gameTime % 60}` : gameTime % 60}
           </h3>
-          <button onClick={handleStartGame}>Start Game</button>
         </>
       ) : (
-        <Timer gameOver={gameOver} setGameTime={setGameTime} />
+        <Timer
+          gameOver={gameOver}
+          seconds={seconds}
+          setGameTime={setGameTime}
+          setSeconds={setSeconds}
+        />
       )}
+      <button onClick={handleStartGame}>Start New Game</button>
 
       <div className="card-container">
         {Images.map((image, index) => {
