@@ -4,3 +4,7 @@ header {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+h1 {
+  margin: 10px 0 6px 0;
+}

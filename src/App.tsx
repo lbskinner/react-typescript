@@ -22,7 +22,7 @@ class App extends React.Component {
     // variables of type any allow you to access arbitrary properties, even ones that don't exist
     // unknown - don;t know the type, such as dynamic content - user defined input
     // or want to intentionally accept all values, etc
-    // void - commonly used as the return type of fundtionc that do not return a value
+    // void - commonly used as the return type of functions that do not return a value
     // const warning = (): void => {
     //   console.log("Warning!");
     // };

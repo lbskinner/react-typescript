@@ -89,3 +89,7 @@ button:hover {
   background: linear-gradient(45deg, #1e2d82, #26c4f7);
   cursor: pointer;
 }
+
+p {
+  margin: 0 0 10px 0;
+}
