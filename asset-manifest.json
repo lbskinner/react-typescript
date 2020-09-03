@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/react-typescript/static/css/main.904867d6.chunk.css",
+    "main.css": "/react-typescript/static/css/main.dc3a8486.chunk.css",
     "main.js": "/react-typescript/static/js/main.e9877966.chunk.js",
     "main.js.map": "/react-typescript/static/js/main.e9877966.chunk.js.map",
     "runtime-main.js": "/react-typescript/static/js/runtime-main.f51b0758.js",
@@ -8,9 +8,9 @@
     "static/js/2.93a9e59d.chunk.js": "/react-typescript/static/js/2.93a9e59d.chunk.js",
     "static/js/2.93a9e59d.chunk.js.map": "/react-typescript/static/js/2.93a9e59d.chunk.js.map",
     "index.html": "/react-typescript/index.html",
-    "precache-manifest.7dd86f5d204253dc33f44b8952d93d69.js": "/react-typescript/precache-manifest.7dd86f5d204253dc33f44b8952d93d69.js",
+    "precache-manifest.b63ad590ec501f22581e776d322a228a.js": "/react-typescript/precache-manifest.b63ad590ec501f22581e776d322a228a.js",
     "service-worker.js": "/react-typescript/service-worker.js",
-    "static/css/main.904867d6.chunk.css.map": "/react-typescript/static/css/main.904867d6.chunk.css.map",
+    "static/css/main.dc3a8486.chunk.css.map": "/react-typescript/static/css/main.dc3a8486.chunk.css.map",
     "static/js/2.93a9e59d.chunk.js.LICENSE.txt": "/react-typescript/static/js/2.93a9e59d.chunk.js.LICENSE.txt",
     "static/media/daniel.jpg": "/react-typescript/static/media/daniel.1e4d7ad3.jpg",
     "static/media/david.jpg": "/react-typescript/static/media/david.1eadd4b7.jpg",
@@ -23,7 +23,7 @@
   "entrypoints": [
     "static/js/runtime-main.f51b0758.js",
     "static/js/2.93a9e59d.chunk.js",
-    "static/css/main.904867d6.chunk.css",
+    "static/css/main.dc3a8486.chunk.css",
     "static/js/main.e9877966.chunk.js"
   ]
 }
