@@ -1,37 +1,26 @@
 import React, { useState, useEffect } from "react";
 
 interface timerProps {
-  isRunning: boolean;
+  gameOver: boolean;
   setGameTime: (prevState: number) => void;
 }
 
-const Timer: React.FC<timerProps> = ({ isRunning, setGameTime }) => {
+const Timer: React.FC<timerProps> = ({ gameOver, setGameTime }) => {
   const [seconds, setSeconds] = useState<number>(0);
-  //   const [isRunning, setIsRunning] = useState<boolean>(true);
 
   useEffect(() => {
     let timer: any = null;
-    if (isRunning) {
+    if (!gameOver) {
       timer = setInterval(() => {
         setSeconds((seconds) => seconds + 1);
-        setGameTime(seconds);
       }, 1000);
-    } else if (!isRunning && seconds !== 0) {
+      setGameTime(seconds);
+    } else if (gameOver && seconds !== 0) {
       clearInterval(timer);
-
       setSeconds(0);
     }
     return () => clearInterval(timer);
-  }, [isRunning, seconds, setGameTime]);
-
-  //   const startTimer = () => {
-  //     setIsRunning(true);
-  //   };
-
-  //   const resetTimer = () => {
-  //     setSeconds(0);
-  //     setIsRunning(false);
-  //   };
+  }, [gameOver, seconds, setGameTime]);
 
   return (
     <p>

@@ -4,22 +4,16 @@ import Card from "../Card/Card";
 import Images from "../../ImagesArray";
 import Timer from "../Timer/Timer";
 
-type CardsFlippedState = {
-  name: string;
-};
-
 function Cards() {
   const [lastClicked, setLastClicked] = useState<HTMLElement>();
   const [gameOver, setGameOver] = useState(false);
   const [cardsMatched, setCardsMatched] = useState<string[]>([]);
-  const [isRunning, setIsRunning] = useState<boolean>(false);
   const [gameTime, setGameTime] = useState<number>(0);
 
   const cardsDivs = document.querySelectorAll(".memory-card");
 
   useEffect(() => {
     shuffleCards(Images);
-    setIsRunning(true);
   }, []);
 
   useEffect(() => {
@@ -35,22 +29,17 @@ function Cards() {
       // same as temp = array[i] array[i] = array[j] array[j] = temp
       [array[i], array[j]] = [array[j], array[i]];
     }
-    console.log(array);
   };
 
   const handleGameOver = () => {
     // setTimeout(() => {
     setGameOver(true);
-    setIsRunning(false);
-    console.log("game over");
-    console.log(gameTime);
+    console.log({ gameTime });
     // }, 500);
   };
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     const currentClicked: HTMLElement = event.currentTarget;
-    console.log(currentClicked);
-
     currentClicked.classList.add("flip");
     if (!lastClicked) {
       setLastClicked(currentClicked);
@@ -85,7 +74,6 @@ function Cards() {
     cardsDivs.forEach((card) => {
       card.classList.remove("flip", "image-opacity");
     });
-    setIsRunning(true);
   };
 
   return (
@@ -103,7 +91,7 @@ function Cards() {
           <button onClick={handleStartGame}>Start Game</button>
         </>
       ) : (
-        <Timer isRunning={isRunning} setGameTime={setGameTime} />
+        <Timer gameOver={gameOver} setGameTime={setGameTime} />
       )}
 
       <div className="card-container">
