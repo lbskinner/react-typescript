@@ -4,13 +4,11 @@ import Card from "../Card/Card";
 import Images from "../../ImagesArray";
 import Timer from "../Timer/Timer";
 
-const lastThreeGames: number[] = [];
 let count: number = 0;
 
 function Cards() {
   const [lastClicked, setLastClicked] = useState<HTMLElement>();
   const [gameOver, setGameOver] = useState(false);
-  const [cardsMatched, setCardsMatched] = useState<string[]>([]);
   const [seconds, setSeconds] = useState<number>(0);
   const [gameTime, setGameTime] = useState<number>(0);
   const [priorPlayedTime, setPriorPlayedTime] = useState<number[]>([]);
@@ -20,12 +18,6 @@ function Cards() {
   useEffect(() => {
     shuffleCards(Images);
   }, []);
-
-  // useEffect(() => {
-  //   if (cardsMatched.length === 6) {
-  //     handleGameOver();
-  //   }
-  // });
 
   const shuffleCards = (array: string[]) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -73,12 +65,11 @@ function Cards() {
           lastClicked.classList.remove("flip");
           currentClicked.classList.remove("flip");
         }, 500);
-        // setCardsMatched((prevState) => [
-        //   ...prevState,
-        //   currentClicked.dataset.name || "",
-        // ]);
+
         count++;
-        if (count === 6) handleGameOver();
+        if (count === 6) {
+          setTimeout(() => handleGameOver(), 500);
+        }
       } else {
         setTimeout(() => {
           lastClicked.classList.remove("flip");
@@ -91,7 +82,6 @@ function Cards() {
   const resetGame = () => {
     shuffleCards(Images);
     count = 0;
-    // setCardsMatched([]);
     setGameOver(false);
     setSeconds(0);
     cardsDivs.forEach((card) => {
@@ -116,12 +106,13 @@ function Cards() {
           <h3>Last Three Games:</h3>
           {priorPlayedTime.map((time, index) => {
             return (
-              <h4 key={index}>
+              <h5 key={index}>
+                Time Played:{" "}
                 {Math.floor(time / 60) < 10
                   ? `0${Math.floor(time / 60)}`
                   : Math.floor(time / 60)}{" "}
                 : {time % 60 < 10 ? `0${time % 60}` : time % 60}
-              </h4>
+              </h5>
             );
           })}
           <h3>
