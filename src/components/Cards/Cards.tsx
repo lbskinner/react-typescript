@@ -30,7 +30,7 @@ function Cards() {
 
   const handleLocalStorage = () => {
     const priorGameTimes: number[] = JSON.parse(
-      localStorage.getItem("lastThreeGames") || ""
+      localStorage.getItem("lastThreeGames") || "[]"
     );
     console.log(priorGameTimes);
     setPriorPlayedTime([...priorGameTimes]);
@@ -68,7 +68,7 @@ function Cards() {
 
         count++;
         if (count === 6) {
-          setTimeout(() => handleGameOver(), 500);
+          setTimeout(() => handleGameOver(), 300);
         }
       } else {
         setTimeout(() => {
